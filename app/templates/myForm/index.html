@@ -1,0 +1,74 @@
+{% load static%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+
+<body lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <title>Auto Lyrics</title>
+        
+        <link rel="stylesheet" href="{% static 'formstyles.css' %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <link rel="shortcut icon" type="image/jpg" href="{% static 'indexicon.ico' %}">
+
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                <a href="https://github.com/UwemEkong" target="_blank"><img alt="Logo" src=" {% static 'logo.png'%}"
+                        width="75" height="75"></a>
+
+
+            </header>
+
+            <div id="main">
+                <img alt="Banner" src=" {% static 'banner.png'%}" width="434" height="46" class="banner"></a>
+                <div id="column1">
+
+                    <form method='post'>
+                        {%csrf_token%}
+                        {{form|crispy}}
+                        <br>
+                        <button type='submit' class="custbtn">Generate</button>
+                    </form>
+
+                    <br>
+
+
+                </div>
+
+                <div id="sidebar">
+                    <div class="socials">
+                        <ul>
+                            <li><a href="https://github.com/UwemEkong" target="_blank"><i
+                                        class="fab fa-github fa-2x"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/uwemekong/" target="_blank"><i
+                                        class="fab fa-linkedin fa-2x"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="About">
+                <p class="About-heading">How Auto Lyrics Works<br></p>
+                <p class="About-content">After choosing a title and selecting your desired artist,
+                    the lyric generator takes action by coming up with song lyrics in the same style as the chosen
+                    artist. Auto Lyrics accomplishes
+                    this by utilizing Markov chains.<br></p>
+                <p class="Markov-heading">What Is A Markov Chain?</p>
+                <p class="Markov-content">In short, a Markov chain is a <a
+                        href="https://www.sciencedirect.com/topics/neuroscience/stochastic-processes"
+                        target="_blank">stochastic process </a>that gives us the power to predict the future, based on
+                    past and previous states. You can learn more about Markov chains <a
+                        href="http://setosa.io/ev/markov-chains/" target="_blank">here.</a></p>
+            </div>
+            <footer style="background-color:#03037e;">
+            </footer>
+        </div>
+        <script src="https://kit.fontawesome.com/3bcb2f0708.js" crossorigin="anonymous"></script>
+    </body>
+
+    </html>

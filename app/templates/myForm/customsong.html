@@ -1,0 +1,43 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Custom Song</title>
+  <link rel="stylesheet" href="{% static 'songstyles.css' %}">
+  <link rel="shortcut icon" type="image/jpg" href="{% static 'favicon3.ico' %}">
+</head>
+
+<body>
+
+
+  <div id="container">
+    <header>
+      <a href="https://github.com/UwemEkong" target="_blank"><img alt="Logo" src=" {% static 'logo.png'%}" width="75"
+          height="75"></a>
+    </header>
+
+    <div id="content">
+
+      {%if messages%}
+      <ul class="messages">
+        {% for message in messages%}
+        <li {% if message.tags %} class=" {{message.tags}}" {% endif %}>
+          <p id="messagetext">{{message}}</p>
+
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <script src="{% static 'songpage.js' %}"></script>
+      <a href="/home/" class="button">Reset</a>
+    </div>
+    <footer>
+    </footer>
+  </div>
+</body>
+
+</html>
