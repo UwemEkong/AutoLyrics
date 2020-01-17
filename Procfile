@@ -1,0 +1,1 @@
+web: gunicorn autolyrics.wsgi --log-file -
