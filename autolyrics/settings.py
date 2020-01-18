@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '!ie)x0j(jt82k554f!-_8ad+h3^^e5
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['autolyrics.herokuapp.com','.herokuapp.com']
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
