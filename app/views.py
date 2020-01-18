@@ -63,8 +63,8 @@ def userContact(request):
     form = SongForm()
 
    
-    return render(request, 'myform/index.html', {'form': form})
+    return render(request, 'myForm/index.html', {'form': form})
 
 #Song page that the user gets redirected to
 def customsong(request):
-    return render(request, 'myform/customsong.html')
+    return render(request, 'myForm/customsong.html')

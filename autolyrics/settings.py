@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '!ie)x0j(jt82k554f!-_8ad+h3^^e5
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['autolyrics.herokuapp.com','.herokuapp.com']
+ALLOWED_HOSTS = ['autolyrics.herokuapp.com','.herokuapp.com', '127.0.0.1']
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'autolyrics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'app/templates')
+        'DIRS': [os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
