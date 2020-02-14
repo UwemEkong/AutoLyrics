@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.contrib import messages
 from rest_framework.parsers import JSONParser
-from . models import Song, Artist, UserSong
+from . models import Song,UserSong
 from . serializers import SongSerializer
 from . forms import SongForm
 import pickle
@@ -20,6 +20,7 @@ import os
 class SongView(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
+
 
 #Replace unnecessary characters in order to read correct pickle file
 def cleanString(fileName):
@@ -53,11 +54,15 @@ def userContact(request):
     if request.method == 'POST':
         form = SongForm(request.POST)
         if form.is_valid():
-            Title = form.cleaned_data['Title']
+            Title = form.cleaned_data['title']
             Artist = form.cleaned_data['Artist']
             myDict = (request.POST).dict()
             answer = markovifyText(myDict)
-            messages.success(request,  myDict['Title'] + ':' + answer)
+            
+
+            s= Song(artist=Artist,title=Title,lyrics=answer,uniqueUser=request.user)
+            s.save()
+            messages.success(request,  myDict['title'] + ':' + answer)
         return redirect('customsong')
 
     form = SongForm()
@@ -68,3 +73,24 @@ def userContact(request):
 #Song page that the user gets redirected to
 def customsong(request):
     return render(request, 'myForm/customsong.html')
+
+from django.views import generic
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+class SongListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
+    model = Song
+
+    def get_queryset(self):
+        return Song.objects.filter(uniqueUser=self.request.user)
+
+class SongDetailView(generic.DetailView):
+    model = Song
+
+class UserSongListView(LoginRequiredMixin,generic.ListView):
+    model = Song
+    template_name = 'app/usersong_list_unique_user.html'
+
+    def get_queryset(self):
+        return Song.objects.filter(uniqueUser=self.request.user)

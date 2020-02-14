@@ -5,35 +5,6 @@ Javascript used to format the user's song by making it look good on the front en
 
 let songContent = document.getElementById("content");
 let song = songContent.innerText
-function getTitle(text) {
-    let title = "";
-    for (i = 0; i < 15; i++) {
-        if (text.charAt(i) != ":") {
-            title += text.charAt(i);
-        } else {
-            return title;
-        }
-    }
-}
-
-// Removes Punctuation
-function cleanSentance(sentance) {
-
-    let firstCleaning = sentance.replace(/[\.,-\/#/!$%\^&\*;:{}=\-_`~()@\+\?><\[\]\+]/g, "");
-
-    let secondCleaning = firstCleaning.replace(/\s{2,}/g, "");
-
-    return finalCleaning(secondCleaning);
-}
-
-//Removes trailing apostrophes and unnecessary text
-function finalCleaning(sentance) {
-    sentance = sentance.replace(/'s/g, "");
-    sentance = sentance.replace(/'t/g, "");
-    sentance = sentance.replace(/'re/g, "");
-    sentance = sentance.replace(/VERSE/g, "");
-    return sentance.replace(/[0-9]/g, "");
-}
 
 //Formats the song into 5 stanzas
 function getStanzas(text) {
@@ -48,7 +19,6 @@ function getStanzas(text) {
         }
 
         if (text.charAt(i) == text.charAt(i).toUpperCase() && new_sentance_counter >= 4 && text.charAt(i) != " " && text.charAt(i + 1) != null) {
-            sentance = cleanSentance(sentance);
             document.write(sentance + "<br>")
             sentance = "";
             new_sentance_counter = 0;
@@ -70,12 +40,9 @@ function getStanzas(text) {
 }
 // Hides original message 
 function hideMessage() {
-    document.getElementById("messagetext").style.visibility = "hidden";
+    document.getElementById("lyrics").style.visibility = "hidden";
 }
 
-let title = getTitle(song)
-title = title.fontsize(7)
-document.write(title + "<br> <br>")
-song = song.replace(getTitle(song) + ":", "");
+
 hideMessage()
 getStanzas(song)

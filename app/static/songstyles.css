@@ -3,9 +3,10 @@
     margin:0;
     padding:0;
     font-family: Helvetica, Arial, "Times New Roman", Times, serif;
+    text-align: center;
 }
 
-#content {
+p {
     text-align: center;
 }
 
@@ -30,5 +31,11 @@ footer {
     margin: 20px;
 }
 
+#messagetext {
+    font-size: 0px;
+    margin-bottom: 20px;
+}
 
-
+.navbar {
+    background-color: blue;
+}

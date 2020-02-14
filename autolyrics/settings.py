@@ -161,3 +161,6 @@ DATABASES['default'].update(db_from_env)
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Redirect to home URL after login 
+LOGIN_REDIRECT_URL = '/'
