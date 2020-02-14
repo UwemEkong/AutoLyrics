@@ -92,9 +92,9 @@ WSGI_APPLICATION = 'autolyrics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb1',
-        'USER': 'user1',
-        'PASSWORD':'pass1',
+        'NAME': 'mydb3',
+        'USER': 'postgres',
+        'PASSWORD':'ekong',
         'HOST': 'localhost',
         'PORT': '5432',
 
