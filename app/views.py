@@ -60,8 +60,8 @@ def userContact(request):
             answer = markovifyText(myDict)
             
 
-            s= Song(artist=Artist,title=Title,lyrics=answer,uniqueUser=request.user)
-            s.save()
+            #s= Song(artist=Artist,title=Title,lyrics=answer,uniqueUser=request.user)
+            #s.save()
             messages.success(request,  myDict['title'] + ':' + answer)
         return redirect('customsong')
 
