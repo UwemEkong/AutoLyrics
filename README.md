@@ -1,2 +1,2 @@
 # AutoLyrics
-Web app written in Django
+Song lyric generator written in Django
